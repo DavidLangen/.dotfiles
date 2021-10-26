@@ -1,0 +1,287 @@
+#  _ _____    ____             __ _       
+# (_)___ /   / ___|___  _ __  / _(_) __ _ 
+# | | |_ \  | |   / _ \| '_ \| |_| |/ _` |
+# | |___) | | |__| (_) | | | |  _| | (_| |
+# |_|____/   \____\___/|_| |_|_| |_|\__, |
+#                                   |___/
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+#------------------------------------------
+# Styles
+#------------------------------------------
+font pango:Hack Nerd Font 12
+set $archBlue #1793d1
+set $archGray #333333
+gaps inner 1
+gaps outer 1 
+smart_borders on
+client.focused $archBlue $archBlue $archGray $archBlue
+#------------------------------------------
+# Window Managment
+#------------------------------------------
+
+# Moving Workspaces to other monitor
+bindsym $mod+Control+Shift+Down exec i3-msg move workspace to output down
+bindsym $mod+Control+Shift+Up exec i3-msg move workspace to output up
+bindsym $mod+Control+Shift+Right exec i3-msg move workspace to output right
+bindsym $mod+Control+Shift+Left exec i3-msg move workspace to output left
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+set $ws17 "17"
+set $ws18 "18"
+set $ws19 "19"
+set $ws20 "20"
+
+# switch to workspace
+
+bindsym $mod+1 workspace number $ws1 layout splith 
+bindsym $mod+2 workspace number $ws2 layout tabbed 
+bindsym $mod+3 workspace number $ws3 layout splith
+bindsym $mod+4 workspace number $ws4 layout splith 
+bindsym $mod+5 workspace number $ws5 layout splith 
+bindsym $mod+6 workspace number $ws6 layout splith
+bindsym $mod+7 workspace number $ws7 layout splith
+bindsym $mod+8 workspace number $ws8 layout splith
+bindsym $mod+9 workspace number $ws9 layout splith
+bindsym $mod+0 workspace number $ws10 layout splith
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+set $alt Control
+
+bindsym $mod+$alt+1 workspace $ws11
+bindsym $mod+$alt+2 workspace $ws12
+bindsym $mod+$alt+3 workspace $ws13
+bindsym $mod+$alt+4 workspace $ws14
+bindsym $mod+$alt+5 workspace $ws15
+bindsym $mod+$alt+6 workspace $ws16
+bindsym $mod+$alt+7 workspace $ws17
+bindsym $mod+$alt+8 workspace $ws18
+bindsym $mod+$alt+9 workspace $ws19
+bindsym $mod+$alt+0 workspace $ws20
+
+# move focused container to workspace
+bindsym $mod+$alt+Shift+1 move container to workspace number $ws11
+bindsym $mod+$alt+Shift+2 move container to workspace number $ws12
+bindsym $mod+$alt+Shift+3 move container to workspace number $ws13
+bindsym $mod+$alt+Shift+4 move container to workspace number $ws14
+bindsym $mod+$alt+Shift+5 move container to workspace number $ws15
+bindsym $mod+$alt+Shift+6 move container to workspace number $ws16
+bindsym $mod+$alt+Shift+7 move container to workspace number $ws17
+bindsym $mod+$alt+Shift+8 move container to workspace number $ws18
+bindsym $mod+$alt+Shift+9 move container to workspace number $ws19
+bindsym $mod+$alt+Shift+0 move container to workspace number $ws20
+
+bindsym $mod+Control+Right workspace next 
+bindsym $mod+Control+k workspace next 
+bindsym $mod+Control+j workspace prev 
+bindsym $mod+Control+Left workspace prev
+
+workspace_auto_back_and_forth yes
+for_window [class=".*"] title_format " 类 %title"
+for_window [class="(?i)terminal"] title_format "  %title"
+for_window [class="(?i)chrome"] title_format "  %title"
+for_window [class="(?i)idea"] title_format "  %title"
+for_window [class="(?i)code"] title_format "  %title"
+
+# Enable or disable floating
+for_window [class="Arandr"] floating enable
+for_window [class="Lxappearance"] floating enable
+
+
+
+for_window [class="jetbrains-idea" title="Debug"] floating disable
+for_window [class="java-lang-Thread" instance="java-lang-Thread"] floating enable
+for_window [class="jetbrains-.*" title="win0"] floating enable
+
+
+# for_window [class="feh"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [class="zoom"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Microsoft Teams - Preview" title="Microsoft Teams-Benachrichtigung"] floating enable
+for_window[instance="Godot_Editor"] floating disable
+for_window[instance="Godot_Engine"] floating enable
+for_window[class="copyq"] floating enable
+
+# Move Apps to right workspaces
+for_window [class="Slack"] move to workspace number $ws6
+
+for_window [class="Slack" title=".*Slack call with.*"] floating enable
+
+
+assign [class="Google-chrome" title=".*Microsoft Teams"] number $ws5
+assign [class="Microsoft Teams - Preview" ] number $ws5
+for_window [class="Microsoft Teams - Insiders"] move to workspace number $ws5
+for_window [class="Google-chrome" title=".*Microsoft Teams"] move to workspace number $ws5
+
+assign [class="(?i)idea"] number $ws2
+for_window [class="(?i)idea"] move --no-auto-back-and-forth to workspace number $ws2
+
+assign [class="YoutubeMusic"] number $ws7
+for_window [class="YoutubeMusic"] move to workspace number $ws7
+
+assign [class="Trello"] number $ws19
+for_window [class="Trello"] move to workspace number $ws19
+
+assign [class="obsidian"] number $ws20
+for_window [class="obsidian"] move --no-auto-back-and-forth to workspace number $ws20
+for_window [class="obsidian"] layout tabbed 
+
+for_window [title=".*Android Emulator.*"] floating enable
+#------------------------------------------
+# AUTOSTART
+#------------------------------------------
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id $SCRIPTS/startup.sh
+exec --no-startup-id slack
+exec --no-startup-id teams
+exec --no-startup-id obsidian
+exec --no-startup-id "bash -c'$SCRIPTS/battery_check.bash -L 20 -n'"
+exec --no-startup-id libinput-gestures-setup start
+exec "google-chrome-stable"
+exec idea  
+# Startup Workspace
+exec i3-msg workspace $ws1
+exec autotiling
+#-----------------------------------------
+# BASIC BINDINGS
+#-----------------------------------------
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+
+# start a terminal
+bindsym $mod+Return exec xfce4-terminal
+# lock screen
+bindsym $mod+l exec $SCRIPTS/lock
+
+# kill focused window
+bindsym $mod+Shift+q kill
+#--------------------------------------------
+# DMenu Scripts
+#--------------------------------------------
+set $dmenuTheme "arch"
+
+# start dmenu (a program launcher)
+bindsym $mod+Shift+d exec "rofi -modi window -show window "
+bindsym $mod+d exec "rofi -modi drun,run -show drun"
+# start arandr script
+bindsym $mod+r exec $SCRIPTS/rofi-randr
+# start network dmenu
+bindsym $mod+n exec networkmanager_dmenu 
+# i3-layout-Managment (like Tmux)
+bindsym $mod+t exec i3-layout-manager
+# start bwmenu
+bindsym $mod+b exec bwmenu -c 20 --auto-lock 1800
+# ------------------------------------------
+# shortcuts for Programs & Commands
+# ------------------------------------------
+bindsym $mod+c       exec "google-chrome-stable --force-dark-mode --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter"
+bindsym Shift+Print  exec flameshot full
+bindsym Print        exec flameshot gui
+bindsym $mod+odiaeresis exec copyq --start-server menu
+bindsym $mod+p       exec poweroff
+bindsym $mod+Shift+p exec reboot
+
+# -----------------------------------------
+# Movements
+# -----------------------------------------
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+h move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
