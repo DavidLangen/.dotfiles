@@ -196,7 +196,12 @@ alias homestart="autorandr --load home && startup.sh"
 alias f=thefuck
 eval $(thefuck --alias)
 alias sl="sl | lolcat"
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Dotfile Commands
+alias c='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cs="c status"
+alias configHide="config update-index --assume-unchanged"
+alias configUnhide="config update-index --no-assume-unchanged"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
