@@ -17,4 +17,5 @@ export XDG_DATA_HOME=$HOME/.local/share
 xset -r rate 250
 
 # start i3
-i3
+$HOME/.local/bin/xmonad 
+#i3
