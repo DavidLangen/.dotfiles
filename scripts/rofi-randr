@@ -42,7 +42,6 @@ function main() {
     xrandr_cmd+=" --output ${output} ${position} ${mode}"
   done
   ${=xrandr_cmd}
-  $SCRIPTS/startup.sh
 }
 
 ################################################################################
