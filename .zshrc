@@ -10,6 +10,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
@@ -185,14 +186,16 @@ alias splitt="xfce4-terminal --default-working-directory $PWD"
 alias cat="bat"
 alias fzf=fzf --ansi
 alias ping=prettyping --nolegend
-alias du=ncdu
+alias du=dust
+alias ls="exa --icons --sort=.name"
+alias la="exa --long --header --links --accessed --modified --created --group --all --sort=.name  --group-directories-first"
 alias rg=rg -S
 alias jq=jq -r
 alias cls=clear
 alias gs="git status"
 alias mci="mvn clean install"
 alias killAllDockerContainer="docker stop $(docker ps -q)"
-alias homestart="autorandr --load home && startup.sh"
+alias homestart="autorandr --load home"
 alias f=thefuck
 eval $(thefuck --alias)
 alias sl="sl | lolcat"
