@@ -1,0 +1,91 @@
+configuration {
+	font:					"Cascadia Code 12";
+    show-icons:				false;
+    drun-display-format:	"{name}";
+    disable-history:		false;
+	sidebar-mode:			false;
+}
+
+* {
+	background:	#101010c0;
+	foreground:	#f0f0f0ff;
+	accent:		#4f9f5b;
+	blank:		#00000000;
+}
+
+window {
+    transparency:		"real";
+    background-color:	@background;
+    text-color:			@foreground;
+    border-radius:		0px;
+    height:				100%;
+    width:				100%;
+    location:			center;
+    x-offset:			0px;
+    y-offset:			0px;
+}
+
+listview {
+    background-color:	@blank;
+    margin:				0% 0% 0% 0%;
+    spacing:			2%;
+    cycle:				true;
+    dynamic:			true;
+    layout:				horizontal;
+}
+
+mainbox {
+    background-color:	@blank;
+    children:			[ listview ];
+    spacing:			0%;
+    padding:			40% 0px 0px 35%;
+}
+
+element {
+    background-color:	@blank;
+    text-color:			@foreground;
+    border-color:		@accent;
+    orientation:		horizontal;
+    border:				3px 3px 3px 3px;
+    border-radius:		25px;
+}
+
+element-text {
+    background-color:	@blank;
+   text-color:       	inherit;
+	font:				"feather 32";
+    expand:				true;
+    horizontal-align:	0.5;
+    vertical-align:		0.5;
+    margin:				4.5% 2.7% 4.5% 2.7%;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color:	@accent;
+    text-color:			@foreground;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:	@blank;
+    text-color:			@foreground;
+}
+
+element selected {
+    background-color:	@accent;
+    text-color:			@foreground;
+    border:				0.2% 0.2% 0.2% 0.2%;
+    border-radius:		25px;
+    border-color:		@border;
+}
+
+element selected.urgent {
+    background-color:	@accent;
+    text-color:			@foreground;
+}
+
+element selected.active {
+    background-color:	@blank;
+    color:				@foreground;
+}

@@ -1,0 +1,9 @@
+[Unit]
+Description=Xmonad Window Manager
+Systemd=xmonad-service
+
+[Service]
+ExecStart=%h/.local/bin/myxmonad
+StandardOutput=file:%h/.xmonad/xmonadservice1.log
+StandardError=file:%h/.xmonad/xmonadservice2.log
+Type=simple

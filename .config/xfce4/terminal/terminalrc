@@ -26,12 +26,12 @@ MiscSlimTabs=FALSE
 MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
-BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
-BackgroundDarkness=0,740000
+BackgroundDarkness=0.930000
 ColorCursorUseDefault=FALSE
 ColorCursor=#17179393d1d1
 ColorCursorForeground=#333333333333
 ScrollingUnlimited=TRUE
 FontName=Hack Nerd Font Mono Bold Italic 12
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 

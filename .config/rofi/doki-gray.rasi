@@ -1,0 +1,66 @@
+* {
+  selectedColor: #4ED4B0;
+  background-color: #35393B;
+  normal-background: red;
+  normal-foreground:red ;
+  border-color: #2e343f;
+  text-color: #F5F5F5;
+  spacing: 0;
+  width: 512px;
+  text-selected:red;
+}
+
+inputbar {
+  border: 0 0 1px 0;
+  children: [prompt, entry];
+}
+
+button selected {
+background-color: red;
+text-color: red;
+}
+
+#element alternate.active {
+text-color:red; 
+background-color: red;
+}
+
+prompt {
+  padding: 10px;
+  border: 0 1px 0 0;
+}
+
+textbox {
+  background-color: #2e343f;
+  border: 0 0 1px 0;
+  border-color: #282C33;
+  padding: 8px;
+}
+
+
+entry {
+  padding: 2px;
+  cursor-color: red;
+}
+
+#listviewBorder {
+	background-color:red;
+}
+
+listview {
+  cycle: true;
+  margin: 0 0 -1px 0;
+  scrollbar: false;
+}
+
+element {
+  border: 0 0 1px 0;
+  padding: 6px;
+  cursor-color: red;
+}
+
+element selected {
+  background-color: @selectedColor;
+  cursor-color: red;
+}
+

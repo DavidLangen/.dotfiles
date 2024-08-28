@@ -1,0 +1,22 @@
+# Maintainer David Langen
+
+# Prepare Source Package
+tar -h --exclude=.idea -cf rootfs.tar -C rootfs .
+
+pkgname=my-system-linux-config
+pkgver=0.1.0
+pkgrel=15
+pkgdesc='to install some system specific settings'
+license=('GPL3')
+arch=('x86_64')
+sha512sums=('SKIP')
+source=('rootfs.tar')
+noextract=('rootfs.tar')
+depends=(
+	base
+	systemd
+)
+
+package() {
+	tar -xf rootfs.tar -C "$pkgdir"
+}

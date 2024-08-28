@@ -1,0 +1,12 @@
+cradle:
+  stack:
+    stackYaml: stack.yaml
+    components:
+      - path: "./packages/xmobar-git"
+        component: "xmobar:lib"
+      - path: "./packages/xmonad-contrib-git"
+        component: "xmonad-contrib:lib"
+      - path: "./packages/xmonad-git"
+        component: "xmonad:lib"
+      - path: "./src/xmonad.hs"
+        component: "myxmonad:exe:myxmonad"

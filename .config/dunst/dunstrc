@@ -53,21 +53,21 @@ context = ctrl+shift+period
 
 [urgency_low]
 timeout = 6
-background = "#14161B"
+background = "#35393B"
 foreground = "#bbc3c8"
-frame_color = "#1793d0"
+frame_color = "#4ED4B0"
 icon = ~/.config/dunst/low.png 
 
 [urgency_normal]
 timeout = 10
-background = "#14161B"
+background = "#35393B"
 foreground = "#bbc3c8"
-frame_color = "#1793d0"
+frame_color = "#4ED4B0"
 icon = ~/.config/dunst/normal.png 
 
 [urgency_critical]
 timeout = 0
-background = "#14161B"
+background = "#35393B"
 foreground = "#bbc3c8"
 frame_color = "#C70039"
 icon = ~/.config/dunst/critical.png 

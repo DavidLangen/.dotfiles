@@ -1,0 +1,21 @@
+[Unit]
+Description=Picom
+Requires=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/picom --config %E/picom/config.conf 
+ExecReload=/usr/bin/kill -s SIGUSR1 $MAINPID
+RestartSec=0
+Restart=always
+
+# disallow writing to /usr, /bin, /sbin, ...
+ProtectSystem=true
+# more paranoid security settings
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+
+[Install]
+WantedBy=graphical-session.target

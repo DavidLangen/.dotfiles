@@ -4,12 +4,13 @@ Config { font = "xft:Hack Nerd Font:mono:pixelsize=14:antialias=true:hinting=tru
           , position    = Top
           , border      = NoBorder
           , borderWidth = 0
-          , borderColor = "#373b41"
           , iconRoot = ".config/xmobar/icons"
+          , additionalFonts=["xft:Font Awesome 5 Free:style=Solid"]
           , allDesktops  = True
           , commands = [
+                      Run XPropertyLog "_XMONAD_LOG_1",
                       Run Battery [
-                                  "-t", "<leftipat> <acstatus>"
+                                  "-t", "<leftipat><acstatus>"
                                   , "--Low"       , "20"      -- units: %
                                   , "--High"      , "71"      -- units: %
                                   , "--low"       , "#a54242"
@@ -20,73 +21,52 @@ Config { font = "xft:Hack Nerd Font:mono:pixelsize=14:antialias=true:hinting=tru
                                   , "--on-icon-pattern"   , "<icon=battery/on/battery_on_%%.xpm/>"
                                   , "--off-icon-pattern"  , "<icon=battery/off/battery_off_%%.xpm/>"
                                   , "--idle-icon-pattern" , "<icon=battery/idle/battery_idle_%%.xpm/>"
-                                  , "-o" , "<left><fc=#c5c8c6>%</fc> <timeleft>" -- discharging status
-                                  , "-O" , "<left><fc=#c5c8c6>% <timeleft></fc>" -- plugged in status
-                                  , "-i" , "<fc=#707880>IDLE</fc>"               -- charged status
+                                  , "-o" , " <left><fc=#42b9f5>%</fc> <timeleft>" -- discharging status
+                                  , "-O" , " <left><fc=#42b9f5>% <timeleft></fc>" -- plugged in status
+                                  , "-i" , ""               -- charged status
                                   , "-a", "notify-send -u critical 'Battery running out!!!!!!'"
                       ] 60
-                      , Run MultiCoreTemp [ "--template" , "<maxipat><max>°C"
+                      , Run MultiCoreTemp [ "--template" , "<fc=#42b9f5><box type=Bottom mb=2><avg>°C</box></fc>"
                                                    , "--Low"      , "64"      -- units: °C
                                                    , "--High"     , "73"      -- units: °C
-                                                   , "--low"      , "#b5bd68"
-                                                   , "--normal"   , "#de935f"
+                                                   , "--low"      , "#42b9f5"
+                                                   , "--normal"   , "#42b9f5"
                                                    , "--high"     , "#a54242"
                                                    , "--ppad"      , "3"
                                                    , "--width"     , "3"
                                                    , "--maxtwidth" , "5"
-                                                   , "--"
-                                                     , "--max-icon-pattern" , "<icon=temperature/temperature_%%.xpm/>"
-                                                     , "--mintemp" , "20"
-                                                     , "--maxtemp" , "100"
+                                                   ,"-S"          , "True"
                                                    ] 50
-                      , Run Memory ["-t","Mem: <usedratio>%"] 10
-                      , Run MPD [ "--template" , "<statei>"
-                                  , "--maxtwidth" , "0"
-                                  , "--"
-                                  , "--host" , "127.0.0.1"
-                                  , "-P" , "<icon=music/music_playing.xpm/>" -- playing
-                                  , "-Z" , "<icon=music/music_paused.xpm/>"  -- paused
-                                  , "-S" , "<icon=music/music_stopped.xpm/>" -- stopped
-                      ] 10
-                      , Run Kbd [ ("de" , "<fc=#cc6666>DE</fc>")
-                                  , ("us" , "<fc=#b5bd68>US</fc>")
-                      ]
-                      , Run Memory [ "--template" , "<usedipat><usedratio>%"
+                      , Run Memory [ "--template" , "<fc=#42b9f5><box type=Bottom mb=2> <usedratio>%</box></fc>"
                                 , "--Low"      , "55"      -- units: %
                                 , "--High"     , "77"      -- units: %
-                                , "--low"      , "#b5bd68"
-                                , "--normal"   , "#de935f"
+                                , "--low"      , "#42b9f5"
+                                , "--normal"   , "#42b9f5"
                                 , "--high"     , "#a54242"
                                 , "--ppad"      , "3"
                                 , "--width"     , "3"
-                                , "--maxtwidth" , "4"
-                                , "--"
-                                , "--used-icon-pattern" , "<icon=ram/ram_%%.xpm/>"
                       ] 10
-                      , Run Wireless "wlan0" [ "-a", "l"
-                                                         , "-x", "-"
-                                                         , "-t", "<fc=#b5bd68> <essid></fc>"
-                                                         , "-L", "50"
-                                                         , "-H", "75"
-                                                         , "-m"         , "7" --min width
-                                                         , "-l", "#b5bd68" -- violet
-                                                         , "-n", "#b5bd68" -- violet
-                                                         , "-h", "#b5bd68" -- violet
+                      , Run Wireless "wlan0" [
+                                "-a", "l"
+                                , "-x", "-"
+                                , "-t", "<fc=#4f9f5b><box type=Bottom mb=2>  <essid></box></fc>"
+                                , "-L", "50"
+                                , "-H", "75"
+                                , "-m", "7" --min width
+                                , "-l", "#b5bd68"
+                                , "-n", "#b5bd68"
                       ] 10
                       , Run UnsafeStdinReader
-                      , Run DynNetwork [ "--template" , "<tx><txipat><rxipat><rx>"
+                      , Run DynNetwork [ "--template" , "<fc=#42b9f5><box type=Bottom mb=2><tx>   <rx></box></fc>"
                                                  , "--Low"      , "10000"   -- units: B/s
                                                  , "--High"     , "100000"  -- units: B/s
-                                                 , "--low"      , "#b5bd68"
-                                                 , "--normal"   , "#de935f"
-                                                 , "--high"     , "#a54242"
+                                                 , "--low"      , "#42b9f5"
+                                                 , "--normal"   , "#42b9f5"
+                                                 , "--high"     , "#42b9f5"
                                                  , "-m"         , "7" --min width
                                                  ,"-S"          , "True"
-                                                 , "--"
-                                                   , "--rx-icon-pattern" , "<icon=network/rx/network_rx_%%.xpm/>"
-                                                   , "--tx-icon-pattern" , "<icon=network/tx/network_tx_%%.xpm/>"
                                                  ] 10
-                      , Run Date "%F <icon=seperators/seperator.xpm/> %T" "date" 10
+                      , Run Date "%T-%F" "date" 10
                       , Run WeatherX "EDLP" [ (""                        , "<fc=#5e8d87>?</fc>")
                                                      , ("clear"                   , "<icon=weather/weather_sunny.xpm/>")
                                                      , ("mostly clear"            , "<icon=weather/weather_mostly_sunny.xpm/>")
@@ -100,7 +80,7 @@ Config { font = "xft:Hack Nerd Font:mono:pixelsize=14:antialias=true:hinting=tru
                                                      , ("overcast"                , "<icon=weather/weather_cloudy.xpm/>")
                                                      , ("considerable cloudiness" , "<icon=weather/weather_cloudy.xpm/>")
                                                      , ("obscured"                , "<icon=weather/weather_obscured.xpm/>")
-                                                     ] [ "--template", "<skyConditionS><tempC>°C" -- maybe <fc=#5f819d><pressure></fc>hPa
+                                                     ] [ "--template", "<fc=#ffffff,#4f9f5b:0><skyConditionS><tempC>°C </fc>" -- maybe <fc=#5f819d><pressure></fc>hPa
                                                        , "--Low"      , "10"      -- units: %
                                                        , "--High"     , "20"      -- units: %
                                                        , "--low"      , "#81a2be"
@@ -110,26 +90,26 @@ Config { font = "xft:Hack Nerd Font:mono:pixelsize=14:antialias=true:hinting=tru
                                                        , "--width"     , "3"
                                                        , "--maxtwidth" , "18"
                       ] 36000
-                      , Run DiskU [("/", " <used>/<size>"), ("sdb1", "<usedbar>")]
-                                ["-L", "20", "-H", "50", "-m", "1", "-p", "3"]
+                      , Run DiskU [("/", "<fc=#4f9f5b><box type=Bottom mb=2> <used>/<size></box></fc>"), ("sdb1", "<usedbar>")]
+                                ["-L", "20", "-H", "50", "-m", "1", "-p", "3"
+                                , "--low"      , "#4f9f5b"
+                                , "--normal"   , "#4f9f5b"
+                                , "--high"     , "#42b9f5"]
                                 20
                       , Run Com "playerctl" ["metadata", "--format", "Now playing: {{ artist }} - {{ title }}"]  "nowplaying" 10
-                      , Run Cpu [ "--template" , "<ipat><total>%"
+                      , Run Cpu [ "--template" , "<fc=#4f9f5b><box type=Bottom mb=2>  <total>%</box></fc>"
                                                              , "--Low"      , "55"      -- units: %
                                                              , "--High"     , "77"      -- units: %
-                                                             , "--low"      , "#b5bd68"
-                                                             , "--normal"   , "#de935f"
+                                                             , "--low"      , "#4f9f5b"
+                                                             , "--normal"   , "#4f9f5b"
                                                              , "--high"     , "#a54242"
-                                                             , "--ppad"              , "3"
-                                                             , "--width"             , "3"
-                                                             , "--maxtwidth"         , "4"
-                                                             , "--"
-                                                               , "--load-icon-pattern" , "<icon=cpu/cpu_%%.xpm/>"
+                                                             , "--width"   , "3"
                       ] 10
 
           ]
           , sepChar = "%"
           , alignSep = "}{"
-          , template = "<fc=#5294e2>  </fc> <icon=seperators/seperator.xpm/> %UnsafeStdinReader%  }{%EDLP% <icon=seperators/seperator.xpm/> %wlan0wi%%dynnetwork% <icon=seperators/seperator.xpm/> %cpu% <icon=seperators/seperator.xpm/> %multicoretemp% <icon=seperators/seperator.xpm/> %disku% <icon=seperators/seperator.xpm/> %memory% <icon=seperators/seperator.xpm/> %battery% <icon=seperators/seperator.xpm/> %kbd% <icon=seperators/seperator.xpm/> <fc=#ee9a00>%date%</fc> "
+          , template = "<fc=#4f9f5b>  </fc> <icon=seperators/seperator.xpm/> %battery% %_XMONAD_LOG_1%  }{ %wlan0wi%  <icon=seperators/seperator.xpm/> %dynnetwork% <icon=seperators/seperator.xpm/> %cpu% <icon=seperators/seperator.xpm/> %multicoretemp% <icon=seperators/seperator.xpm/> %memory% <icon=seperators/seperator.xpm/> <fc=#4f9f5b><box type=Bottom mb=2>%date%</box></fc> "
+          --, template = "<fc=#4f9f5b>  </fc> <icon=seperators/seperator.xpm/> %battery% <icon=seperators/seperator.xpm/> %UnsafeStdinReader%  }{ %wlan0wi% <icon=seperators/seperator.xpm/> %dynnetwork% <icon=seperators/seperator.xpm/> %cpu% <icon=seperators/seperator.xpm/> %multicoretemp% <icon=seperators/seperator.xpm/> %disku% <icon=seperators/seperator.xpm/> %memory% <icon=seperators/seperator.xpm/> <fc=#4f9f5b><box type=Bottom mb=2>%date%</box></fc> ""
           --, template = "<fc=#5294e2>  </fc> <icon=seperators/seperator.xpm/> %UnsafeStdinReader%  }{%EDLP% <icon=seperators/seperator.xpm/> %wlan0wi%%dynnetwork% <icon=seperators/seperator.xpm/> %battery% <icon=seperators/seperator.xpm/> %kbd% <icon=seperators/seperator.xpm/> <fc=#ee9a00>%date%</fc> "
         }

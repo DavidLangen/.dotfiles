@@ -1,0 +1,13 @@
+[Unit]
+Description=feh background setter
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/feh --bg-fill %E/feh/background4.png --no-fehbg
+ExecReload=/usr/bin/feh --bg-fill %E/feh/background4.png --no-fehbg
+RemainAfterExit=true
+ExecStop=/usr/bin/feh --bg-tile %E/black.jpg --no-fehbg
+RestartSec=0
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Messengers
+Requires=graphical-session.target
+After=graphical-session.target
+Wants=whatsapp.service
+Wants=telegram.service
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,10 +1,29 @@
-#!/bin/sh
+#!/bin/bash
+#exec stack install
 
-exec stack ghc --  \
-  --make xmonad.hs \
-  -i               \
-  -ilib            \
-  -fforce-recomp   \
-  -main-is main    \
-  -v0              \
-  -o "$1"
+## Print all commands to stdout
+set -x
+## Stop script execution on first error
+set -e
+#
+PROJECT_PATH="$HOME/.xmonad/"
+#
+## Use stack to build the xmonad/xmobar binaries
+stack --stack-yaml "$PROJECT_PATH/stack.yaml" \
+    install 
+#
+#    # Create a hard link from the stack binary to the location that xmonad wants
+    ln -f -T \
+      "$(stack --stack-yaml $PROJECT_PATH/stack.yaml exec -- which myxmonad)" "$1"
+
+
+# old way
+#exec stack ghc --  \
+#  --make app/xmonad.hs \
+#  -i               \
+#  -ilib            \
+#  -fforce-recomp   \
+#  -main-is main    \
+#  -v0              \
+#  -o "$1"
+

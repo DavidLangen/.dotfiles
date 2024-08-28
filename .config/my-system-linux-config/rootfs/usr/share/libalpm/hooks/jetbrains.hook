@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = intellij-idea-ultimate-edition
+
+[Action]
+Description = Updating Desktop Files (run Intellij with fixed JAVA_HOME)...
+When = PostTransaction
+Exec = /bin/sh -c 'sed -e "s/Exec\=/Exec\=env\ JAVA\_HOME\=\/usr\/lib\/jvm\/java-17-openjdk\ /g" -i /usr/share/applications/jetbrains-idea.desktop'

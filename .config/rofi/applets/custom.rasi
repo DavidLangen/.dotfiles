@@ -1,0 +1,90 @@
+configuration {
+    show-icons:                     false;
+	font:                      		"Cascadia Code 11";
+    disable-history:                false;
+	sidebar-mode: 					false;
+}
+
+* {
+	background:	#101010c0;
+	foreground:	#f0f0f0ff;
+	accent:		#a08010ff;
+	blank:		#00000000;
+}
+
+window {
+    transparency:	"real";
+    background-color: @background;
+    foreground-color: @foreground;
+    border-radius:	0px;
+    location:		center;
+    width:			100%;
+    height:			100%;
+    x-offset:		0px;
+    y-offset:		0px;
+}
+
+listview {
+	background-color: @blank;
+	margin: 0% 0% 0% 0%;
+    spacing:                        2%;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         horizontal;
+}
+
+mainbox {
+    background-color:               @blank;
+    children:                       [ listview ];
+    spacing:                        0%;
+    padding: 						40% 0px 0px 20%;
+}
+
+element {
+    background-color:               @blank;
+    text-color:                     @foreground;
+    orientation:                    vertical;
+    border-radius:                  20px;
+    border-color: @accent;
+    border: 3px 3px 3px 3px;
+}
+
+element-text {
+    background-color: 				inherit;
+    text-color:       				inherit;
+	font:							"feather 32";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin: 4.5% 2.7% 4.5% 2.7%;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color:               @accent;
+    text-color:                     @foreground;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:               @blank;
+    text-color:                     @foreground;
+}
+
+element selected {
+    background-color:               @accent;
+    text-color:                     @background;
+    border:                  		0px;
+    border-radius:                  20px;
+    border-color:                  	@border;
+}
+
+element selected.urgent {
+    background-color:               @accent;
+    text-color:                     @foreground;
+}
+
+element selected.active {
+    background-color:               @accent;
+    color:                          @foreground;
+}

@@ -1,0 +1,15 @@
+[Unit]
+Description=Slack Systemd
+After=graphical-session.target 
+Requires=graphical-session.target 
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/chromium --user-data-dir=%E/slack-desktop-app --app=https://app.slack.com/client/ --class=slack-own-desktop-app
+RestartSec=10
+Nice=-5
+ManagedOOMMemoryPressure=kill
+ManagedOOMMemoryPressureLimit=10%
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,17 @@
+[Unit]
+Description=YouTube Music Player
+After=graphical-session.target 
+Requires=graphical-session.target 
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/chromium --user-data-dir=%E/youtube-music --app=https://music.youtube.com --class=youtube-music-own-desktop-app
+RestartSec=0
+Restart=always
+MemoryMax=1G
+Nice=-5
+ManagedOOMMemoryPressure=kill
+ManagedOOMMemoryPressureLimit=10%
+
+[Install]
+WantedBy=graphical-session.target

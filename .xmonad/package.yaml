@@ -1,0 +1,74 @@
+# https://github.com/sol/hpack
+
+name:                myxmonad
+version:             0.1.0.0
+# synopsis:
+# description:
+license:             BSD3
+license-file:        LICENSE
+author:              David Langen
+copyright:           langen.david1@gmail.com
+maintainer:          langen.david1@gmail.com
+category:            Application
+#extra-source-files:  ChangeLog.md
+
+ghc-options: -O2 -threaded -with-rtsopts=-N2 -Wno-partial-type-signatures
+
+dependencies:
+  - base >= 4.13 && < 5
+  - bytestring >= 0.10.10.1
+  - containers >= 0.5.7.1
+  - text >= 1.2.2.1
+  - unordered-containers >= 0.2.8.0
+  - vector >= 0.12.1.2
+  - transformers >= 0.5.6.2
+  - mtl >= 2.2.2
+  - memory >= 0.14.6
+  - time >= 1.6.0.1
+  - file-embed >= 0.0.13.0 # ansehen
+  - dbus >= 0.10
+  - xmonad-dbus >= 0.1.0.1
+  - utf8-string >= 1.0.2
+  #- tasty >= 1.4.2
+  #- tasty-hspec >= 1.2
+  # - machines >= 0.7.1 ansehen
+  #- directory >= 1.3.6.0
+  #- deepseq >= 1.4.4.0
+  #- extra >= 1.7.8
+  #- protolude >= 0.3.0
+  # - split-channel >= 0.2.0.1 ansehen
+  #- free >= 5.1.3
+  #- pretty-simple >= 4.0.0.0
+
+#library:
+#  source-dirs: lib
+
+tests:
+  untitled-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - myxmonad
+      #- tasty
+
+
+#library:
+#    source-dirs: src/cherry
+
+executables:
+  myxmonad:
+    dependencies:
+      - xmonad
+      - xmonad-contrib
+      - xmobar
+
+    source-dirs: app
+    main:        xmonad.hs
+    ghc-options:
+      - -fwarn-incomplete-patterns
+      - -threaded
+      - -Wdeprecations

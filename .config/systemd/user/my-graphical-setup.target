@@ -1,0 +1,10 @@
+[Unit]
+Description=GUI Setup
+After=graphical-session-pre.target
+BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+Wants=polybar.target
+Wants=feh.service
+Wants=dunst.service
+Wants=picom.service
+Wants=youtube-music.service

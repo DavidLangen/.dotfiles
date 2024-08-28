@@ -17,8 +17,10 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver:
-  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/16.yaml
+resolver: lts-18.16
+# entspricht:
+# resolver:
+#  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/16.yaml
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -30,9 +32,10 @@ resolver:
 #   - auto-update
 #   - wai
 packages:
-- xmobar-git
-- xmonad-git
-- xmonad-contrib-git
+- .
+- packages/xmobar-git
+- packages/xmonad-git
+- packages/xmonad-contrib-git
 # Dependency packages to be pulled from upstream that are not in the resolver.
 # These entries can reference officially published versions as well as
 # forks / in-progress versions pinned to a git hash. For example:
@@ -44,7 +47,13 @@ packages:
 #
 extra-deps: 
   - iwlib-0.1.0
-  - netlink-1.1.1.0  
+  - netlink-1.1.1.0
+  - xmonad-dbus-0.1.0.1
+  - utf8-string-1.0.2
+  - cairo-0.13.8.2
+  - pango-0.13.8.2
+  - glib-0.13.8.2
+  - gtk2hs-buildtools-0.13.8.3
 
 # Override default flag values for local packages and extra-deps
 flags:
@@ -71,3 +80,7 @@ flags:
 #
 # Allow a newer minor version of GHC than the snapshot specifies
 # compiler-check: newer-minor
+allow-newer: true
+
+build:
+    haddock: true
