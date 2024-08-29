@@ -17,6 +17,10 @@ The dotfiles used for my Arch Setup.
 | Bar                   | Polybar                      |
 | Resource monitor      | bpytop                       |
 
+i3 Setup:
 ![Screenshot of my Setup](./Dotfiles_Setup_Screenshot.png)
 
+xmonad Setup:
+
+![Screenshot of my Setup](./Dotfiles_Setup_Screenshot_xmonad.png)
 
